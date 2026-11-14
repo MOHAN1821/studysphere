@@ -19,3 +19,4 @@ data/
 *.db-wal
 *.db-shm
 .secret_key
+hf_setup.py

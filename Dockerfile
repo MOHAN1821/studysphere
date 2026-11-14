@@ -29,7 +29,7 @@ ENV DATA_DIR=/data \
     WEB_CONCURRENCY=2 \
     GUNICORN_TIMEOUT=120 \
     PYTHONUNBUFFERED=1
-RUN mkdir -p /data
+RUN mkdir -p /data && chmod -R 777 /data
 VOLUME ["/data"]
 EXPOSE 8080
 

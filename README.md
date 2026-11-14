@@ -1,3 +1,10 @@
+---
+title: StudySphere
+sdk: docker
+app_port: 8080
+pinned: false
+---
+
 # Smart Student Productivity Assistant (StudySphere)
 
 React + Vite (TypeScript) frontend and Python FastAPI backend. Existing project preserved (UI, pages, features) — no rebuild from scratch.
