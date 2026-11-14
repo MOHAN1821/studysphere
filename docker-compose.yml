@@ -1,0 +1,22 @@
+# Run anywhere Docker is installed:  docker compose up -d --build
+# App:  http://localhost:8080   (put it behind HTTPS / a domain for public use)
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: "8080"
+      DATA_DIR: /data
+      SECRET_KEY: ${SECRET_KEY:?Set SECRET_KEY in a .env file next to this file}
+      AI_PROVIDER: ${AI_PROVIDER:-anthropic}
+      AI_API_KEY: ${AI_API_KEY:-}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}   # set true once served over HTTPS
+      WEB_CONCURRENCY: "2"
+      GUNICORN_TIMEOUT: "120"
+    volumes:
+      - studysphere-data:/data        # database survives restarts/rebuilds
+    restart: unless-stopped
+
+volumes:
+  studysphere-data:

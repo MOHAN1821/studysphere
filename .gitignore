@@ -1,0 +1,21 @@
+# Local secrets
+.env
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node
+node_modules/
+frontend/dist/
+# Runtime data - never commit
+data/
+*.db
+*.db-wal
+*.db-shm
+.secret_key
