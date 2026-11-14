@@ -1,21 +1,13 @@
-# Render Blueprint: one always-on Docker web service + persistent disk.
-# Gives you a permanent public HTTPS URL: https://<name>.onrender.com
-# NOTE: persistent disks and "always on" need a paid plan (starter). The free plan
-# sleeps after 15 min idle and wipes data on every restart - not suitable for real use.
 services:
   - type: web
     name: smart-student-productivity-assistant
     runtime: docker
     dockerfilePath: ./Dockerfile
-    plan: starter
+    plan: free
     healthCheckPath: /api/health
-    disk:
-      name: studysphere-data
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
       - key: DATA_DIR
-        value: /var/data
+        value: /data
       - key: SECRET_KEY
         generateValue: true
       - key: COOKIE_SECURE
@@ -23,8 +15,8 @@ services:
       - key: AI_PROVIDER
         value: gemini
       - key: AI_API_KEY
-        sync: false          # paste your key in the Render dashboard
+        sync: false
       - key: WEB_CONCURRENCY
-        value: "2"
+        value: "1"
       - key: GUNICORN_TIMEOUT
         value: "120"
